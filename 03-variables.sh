@@ -1,3 +1,5 @@
+#!/bin/bash
+
 person1="John Doe"
 person2="Jane Smith"
 
