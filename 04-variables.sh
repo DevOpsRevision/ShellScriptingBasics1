@@ -1,3 +1,5 @@
+#!/bin/bash
+
 person1=$1
 person2=$2
 
