@@ -16,4 +16,5 @@ if [ $? -eq 0 ]; then
    echo "MySQL installation is .... SUCCESSFUL."
 else
    echo "MySQL installation is .... FAILURE"
+   exit 1 # Exit with a non-zero status to indicate an error
 fi
