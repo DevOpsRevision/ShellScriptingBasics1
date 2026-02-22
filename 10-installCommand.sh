@@ -10,11 +10,19 @@ else
     echo "You are root user. Proceeding with the installation..."
 fi
 
-dnf install mysql -y
+dnf list installed mysql
 
-if [ $? -eq 0 ]; then
-   echo "MySQL installation is .... SUCCESSFUL."
+if [ $? -ne 0 ]; then
+   echo "MySQL is not installed. Proceeding with installation..."
+   dnf install mysql -y
+   if [ $? -eq 0 ]; then
+      echo "MySQL installation is .... SUCCESSFUL."
+   else
+      echo "MySQL installation is .... FAILURE"
+      exit 1 # Exit with a non-zero status to indicate an error
+   fi
 else
-   echo "MySQL installation is .... FAILURE"
-   exit 1 # Exit with a non-zero status to indicate an error
+   echo "MySQL is already installed. No action needed."
+   exit 0 # Exit with a zero status to indicate success
 fi
+
