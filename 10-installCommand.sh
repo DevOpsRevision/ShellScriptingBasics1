@@ -5,6 +5,7 @@ USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
    echo "ERROR:: You are NOT root user. Please run this script with root privileges."
+   exit 1 # Exit with a non-zero status to indicate an error
 else
     echo "You are root user. Proceeding with the installation..."
 fi
