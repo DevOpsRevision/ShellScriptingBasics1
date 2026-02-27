@@ -46,6 +46,5 @@ do
    VALIDATE $? "$package"
   else
    echo -e "$package is already installed. $Y No action needed. $N" | tee -a $LOG_FILE
-   exit 0 # Exit with a zero status to indicate success
   fi
 done
