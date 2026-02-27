@@ -19,20 +19,14 @@ PACKAGES=("mysql" "nginx" "httpd")
 if [ $USERID -ne 0 ]; then
   echo -e "$R ERROR :: Please run as root user. $N"
   exit 1 # Exit with a non-zero status to indicate an error
+else
+  echo "You are root user. Proceeding with the installation..." | tee -a $LOG_FILE
 fi
 
 mkdir -p "$LOGS_FOLDER"
 
 # echo "Script execution started at: $(date)" | tee -a $LOG_FILE
 echo "Script execution started at: $(date)" | tee -a $LOG_FILE
-
-
-if [ $USERID -ne 0 ]; then
-  echo -e "$R ERROR :: You are NOT root user. Please run this script with root priviliges. $N" | tee -a $LOG_FILE
-  exit 1 # Exit with a non-zero status to indicate an error
-else
-  echo "You are root user. Proceeding with the installation..." | tee -a $LOG_FILE
-fi
 
 VALIDATE(){
   if [ $1 -ne 0 ]; then
@@ -45,10 +39,10 @@ VALIDATE(){
 
 for package in "${PACKAGES[@]}";
 do
-  dnf list installed $package &>>$LOG_FILE
+  dnf list installed "$package" &>>$LOG_FILE
   if [ $? -ne 0 ]; then
    echo "$package is not installed. Proceeding with the installation..." | tee -a $LOG_FILE
-   dnf install $package -y &>>$LOG_FILE
+   dnf install "$package" -y &>>$LOG_FILE
    VALIDATE $? "$package"
   else
    echo -e "$package is already installed. $Y No action needed. $N" | tee -a $LOG_FILE
