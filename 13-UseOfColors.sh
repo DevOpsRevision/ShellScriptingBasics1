@@ -12,7 +12,7 @@ VALIDATE(){
     echo -e "$2 installation is .... $R FAILURE $N"
     exit 1 # Exit with a non-zero status to indicate an error
   else
-    echo -e"$2 installation is .... $G SUCCESSFUL. $N"
+    echo -e "$2 installation is .... $G SUCCESSFUL. $N"
   fi
 }
 
