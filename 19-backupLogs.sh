@@ -93,5 +93,3 @@ if [ ! -z "$FILES_TO_BACKUP" ]; then
 else
   echo -e "$Y INFO :: No log files older than $DAYS days found in $SOURCE_DIR. No backup created. $N" | tee -a $LOG_FILE
 fi
-
-
